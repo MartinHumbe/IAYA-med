@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IAYA, tu asistente de inteligencia artificial.">
+  <title>IAYA</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <button id="sidebar-toggle" class="menu-button" type="button" aria-controls="history-sidebar" aria-expanded="false" aria-label="Abrir historial">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="wordmark" href="/" aria-label="IAYA, inicio">IAYA</a>
+    </header>
+
+    <aside id="history-sidebar" class="history-sidebar" aria-label="Historial de chats" aria-hidden="true">
+      <div class="sidebar-header">
+        <button id="new-chat-button" class="new-chat-button" type="button">
+          <span aria-hidden="true">+</span>
+          Nuevo chat
+        </button>
+        <button id="sidebar-close" class="sidebar-close-button" type="button" aria-label="Cerrar historial" title="Cerrar historial">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div id="chat-history" class="chat-history"></div>
+    </aside>
+    <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Cerrar historial" tabindex="-1"></button>
+
+    <main class="chat-main">
+      <section id="welcome-view" class="welcome-view" aria-labelledby="welcome-title">
+        <div class="mascot mascot-large" data-mascot></div>
+        <h1 id="welcome-title">Empecemos</h1>
+        <p>¿En qué te ayudo hoy?</p>
+        <form class="message-form message-form-welcome" data-message-form>
+          <label class="sr-only" for="welcome-input">Escribe tu mensaje</label>
+          <textarea id="welcome-input" class="message-input" data-message-input rows="1" placeholder="Escribe tu mensaje..." maxlength="4000"></textarea>
+          <button class="send-button" data-send-button type="submit" aria-label="Enviar mensaje" disabled>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <nav class="suggestions" aria-label="Sugerencias">
+         <button type="button" class="suggestion-chip" data-suggestion="Dame un caso clínico corto por partes.">
+  Caso clínico
+</button>
+
+<button type="button" class="suggestion-chip" data-suggestion="Nemotecnia rápida de los 12 pares craneales.">
+  Pares craneales
+</button>
+
+<button type="button" class="suggestion-chip" data-suggestion="¿Cómo interpretar una gasometría arterial?">
+  Gasometría
+</button>
+        </nav>
+      </section>
+
+      <section id="conversation-view" class="conversation-view" aria-label="Conversación" hidden>
+        <div class="conversation-mascot mascot mascot-small" data-mascot></div>
+        <div class="messages" data-messages aria-live="polite"></div>
+        <form class="message-form message-form-conversation" data-message-form>
+          <label class="sr-only" for="conversation-input">Escribe tu mensaje</label>
+          <textarea id="conversation-input" class="message-input" data-message-input rows="1" placeholder="Escribe tu mensaje..." maxlength="4000"></textarea>
+          <button class="send-button send-button-small" data-send-button type="submit" aria-label="Enviar mensaje" disabled>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
